@@ -253,11 +253,11 @@
       field('Search', q, 'q'),
       field('Category', select_('cat', [['all', 'All categories']].concat(cats.map(function (c) { return [c[0], c[0] + ' (' + c[1] + ')']; })), state.cat, function (v) { state.cat = v; changed(); }), 'cat'),
       field('Chain', select_('chain', [['all', 'Any chain']].concat(chains.map(function (c) { return [c[0], c[0] + ' (' + c[1] + ')']; })), state.chain, function (v) { state.chain = v; changed(); }), 'chain'),
-      h('div', { class: 'field' }, h('span', { class: 'lab', text: 'Scope' }), seg),
+      h('div', { class: 'field full' }, h('span', { class: 'lab', text: 'Scope' }), seg),
       field('Farm window', select_('win', [['all', 'Any age'], ['new', 'New, under 6 months'], ['established', 'Established, to 2 years'], ['long-running', 'Long-running, 2 years+'], ['unknown', 'Age unknown']], state.win, function (v) { state.win = v; changed(); }), 'win'),
       field('Minimum TVL', select_('tvl', [[0, 'Any TVL'], [10e6, '$10M+'], [50e6, '$50M+'], [100e6, '$100M+'], [500e6, '$500M+']], state.tvl, function (v) { state.tvl = Number(v); changed(); }), 'tvl'),
       field('Sort by', ui.sort, 'sort'),
-      h('div', { class: 'field' }, h('label', { for: 'share', text: 'Airdrop share assumed' }), h('div', { class: 'share' }, slider, out)),
+      h('div', { class: 'field full' }, h('label', { for: 'share', text: 'Airdrop share assumed' }), h('div', { class: 'share' }, slider, out)),
       h('button', { class: 'reset', type: 'button', text: 'Reset', onclick: resetFilters }));
     ui.count = h('p', { class: 'count', 'aria-live': 'polite' });
     ui.list = h('div');
