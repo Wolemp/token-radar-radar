@@ -278,7 +278,7 @@ export interface SideRow {
 /** Everything the dashboard needs: the board, the others, and the model it ran. */
 export interface RadarData {
   as_of: string;
-  source: string;
+  fetched_at: string;
   floor_usd: number;
   model: ModelConstants;
   model_version: string;
@@ -338,7 +338,7 @@ export function buildRadar(snapshot: Snapshot, model: ModelConstants = MODEL): {
   aside.sort((a, b) => b.tvl_usd - a.tvl_usd || bySlug(a, b));
   const radar: RadarData = {
     as_of: snapshot.as_of,
-    source: snapshot.source,
+    fetched_at: snapshot.source.split('fetched ')[1] ?? snapshot.as_of,
     floor_usd: snapshot.floor_usd,
     model,
     model_version: MODEL_VERSION,
